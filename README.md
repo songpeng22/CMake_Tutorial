@@ -13,10 +13,10 @@ Features
 --------
 
 - 01 - Simplest CMake project
-- 02 CMake Project with standard folder assignment
-- 03 Define variable and output variable on message
-- 04 Sub-CMake folder
-- 05 Function/Macro define and call
+- 02 - CMake Project with standard folder assignment
+- 03 - Define variable and output variable on message
+- 04 - Sub-CMake folder
+- 05 - Function/Macro define and call
 
 LICENSE
 -------
