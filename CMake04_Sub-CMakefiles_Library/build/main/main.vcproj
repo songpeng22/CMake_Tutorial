@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding = "UTF-8"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9.00"
+	Name="main"
+	ProjectGUID="{7B4169C1-88C8-34AA-ADB2-74076D916BDB}"
+	Keyword="Win32Proj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\Debug"
+			IntermediateDirectory="main.dir\Debug"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\include;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\src"
+				AssemblerListingLocation="$(IntDir)\"
+				BasicRuntimeChecks="3"
+				CompileAs="2"
+				DebugInformationFormat="3"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="0"
+				Optimization="0"
+				RuntimeLibrary="3"
+				RuntimeTypeInfo="true"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32;_WINDOWS;CMAKE_INTDIR=\&quot;Debug\&quot;"
+				ObjectFile="$(IntDir)\"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\include;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\src"
+				PreprocessorDefinitions="WIN32;_WINDOWS;CMAKE_INTDIR=\&quot;Debug\&quot;"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				AdditionalIncludeDirectories="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\include;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\src"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+				GenerateStublessProxies="true"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCManifestTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib library.lib "
+				OutputFile="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\Debug\main.exe"
+				Version="0.0"
+				AdditionalOptions="/machine:X86 /debug"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\..\main\.\lib\$(ConfigurationName),..\..\main\.\lib"
+				ProgramDatabaseFile="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\Debug/main.pdb"
+				GenerateDebugInformation="true"
+				SubSystem="1"
+				ImportLibrary="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\Debug\main.lib"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\Release"
+			IntermediateDirectory="main.dir\Release"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\include;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\src"
+				AssemblerListingLocation="$(IntDir)\"
+				CompileAs="2"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="2"
+				Optimization="2"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="true"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\&quot;Release\&quot;"
+				ObjectFile="$(IntDir)\"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\include;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\src"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\&quot;Release\&quot;"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				AdditionalIncludeDirectories="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\include;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\src"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+				GenerateStublessProxies="true"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCManifestTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib library.lib "
+				OutputFile="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\Release\main.exe"
+				Version="0.0"
+				AdditionalOptions="/machine:X86"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="..\..\main\.\lib\$(ConfigurationName),..\..\main\.\lib"
+				ProgramDatabaseFile="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\Release/main.pdb"
+				SubSystem="1"
+				ImportLibrary="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\Release\main.lib"/>
+		</Configuration>
+		<Configuration
+			Name="MinSizeRel|Win32"
+			OutputDirectory="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\MinSizeRel"
+			IntermediateDirectory="main.dir\MinSizeRel"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\include;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\src"
+				AssemblerListingLocation="$(IntDir)\"
+				CompileAs="2"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="1"
+				Optimization="1"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="true"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\&quot;MinSizeRel\&quot;"
+				ObjectFile="$(IntDir)\"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\include;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\src"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\&quot;MinSizeRel\&quot;"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				AdditionalIncludeDirectories="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\include;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\src"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+				GenerateStublessProxies="true"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCManifestTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib library.lib "
+				OutputFile="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\MinSizeRel\main.exe"
+				Version="0.0"
+				AdditionalOptions="/machine:X86"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="..\..\main\.\lib\$(ConfigurationName),..\..\main\.\lib"
+				ProgramDatabaseFile="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\MinSizeRel/main.pdb"
+				SubSystem="1"
+				ImportLibrary="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\MinSizeRel\main.lib"/>
+		</Configuration>
+		<Configuration
+			Name="RelWithDebInfo|Win32"
+			OutputDirectory="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\RelWithDebInfo"
+			IntermediateDirectory="main.dir\RelWithDebInfo"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\include;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\src"
+				AssemblerListingLocation="$(IntDir)\"
+				CompileAs="2"
+				DebugInformationFormat="3"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="1"
+				Optimization="2"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="true"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;"
+				ObjectFile="$(IntDir)\"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\include;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\src"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				AdditionalIncludeDirectories="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\include;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\.\src"
+				MkTypLibCompatible="false"
+				TargetEnvironment="1"
+				GenerateStublessProxies="true"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCManifestTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib library.lib "
+				OutputFile="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\RelWithDebInfo\main.exe"
+				Version="0.0"
+				AdditionalOptions="/machine:X86 /debug"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\..\main\.\lib\$(ConfigurationName),..\..\main\.\lib"
+				ProgramDatabaseFile="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\RelWithDebInfo/main.pdb"
+				GenerateDebugInformation="true"
+				SubSystem="1"
+				ImportLibrary="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\RelWithDebInfo\main.lib"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+			<File
+				RelativePath="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\CMakeLists.txt">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule C:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library/main/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake\bin\cmake.exe&quot; &quot;-SC:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library&quot; &quot;-BC:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library/build&quot; --check-stamp-file &quot;C:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library/build/main/CMakeFiles/generate.stamp&quot;&#x0D;&#x0A;if errorlevel 1 goto :VCReportError"
+					AdditionalDependencies="&quot;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\CMakeLists.txt&quot;;&quot;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\CMakeLists.txt&quot;;"
+					Outputs="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule C:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library/main/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake\bin\cmake.exe&quot; &quot;-SC:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library&quot; &quot;-BC:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library/build&quot; --check-stamp-file &quot;C:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library/build/main/CMakeFiles/generate.stamp&quot;&#x0D;&#x0A;if errorlevel 1 goto :VCReportError"
+					AdditionalDependencies="&quot;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\CMakeLists.txt&quot;;&quot;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\CMakeLists.txt&quot;;"
+					Outputs="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule C:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library/main/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake\bin\cmake.exe&quot; &quot;-SC:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library&quot; &quot;-BC:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library/build&quot; --check-stamp-file &quot;C:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library/build/main/CMakeFiles/generate.stamp&quot;&#x0D;&#x0A;if errorlevel 1 goto :VCReportError"
+					AdditionalDependencies="&quot;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\CMakeLists.txt&quot;;&quot;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\CMakeLists.txt&quot;;"
+					Outputs="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule C:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library/main/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake\bin\cmake.exe&quot; &quot;-SC:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library&quot; &quot;-BC:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library/build&quot; --check-stamp-file &quot;C:/Users/cn_pengs/OneDrive - Bizerba365/Desktop/CMake_Tutorial/CMake04_Sub-CMakefiles_Library/build/main/CMakeFiles/generate.stamp&quot;&#x0D;&#x0A;if errorlevel 1 goto :VCReportError"
+					AdditionalDependencies="&quot;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\CMakeLists.txt&quot;;&quot;C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\CMakeLists.txt&quot;;"
+					Outputs="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\build\main\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+			</File>
+		<Filter
+			Name="Source Files"
+			Filter="">
+			<File
+				RelativePath="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\src\test.cpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="">
+			<File
+				RelativePath="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\include\include.h">
+			</File>
+			<File
+				RelativePath="C:\Users\cn_pengs\OneDrive - Bizerba365\Desktop\CMake_Tutorial\CMake04_Sub-CMakefiles_Library\main\src\test.h">
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

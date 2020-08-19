@@ -1,0 +1,8 @@
+#Version
+CMAKE_MINIMUM_REQUIRED(VERSION 3.2)
+
+#Solutin
+PROJECT(Solution)
+
+#Projects
+ADD_SUBDIRECTORY(main)
