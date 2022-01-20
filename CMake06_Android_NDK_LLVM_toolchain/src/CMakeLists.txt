@@ -4,13 +4,8 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.2)
 PROJECT(Solution)
 #project
 SET ( project_name test_project )
-
-set(CMAKE_SYSTEM_NAME Android)
-set(CMAKE_SYSTEM_PROCESSOR arm64)
-
-set(tool_chain /opt/android-ndk/ndk/toolchains/llvm/prebuilt/linux-x86_64)
-set(CMAKE_C_COMPILER ${tool_chain}/bin/aarch64-linux-android26-clang)
-set(CMAKE_CXX_COMPILER ${tool_chain}/bin/aarch64-linux-android26-clang++)
+#CMake include
+include("android_ndk_llvm.cmake")
 
 INCLUDE_DIRECTORIES(
 ../include
