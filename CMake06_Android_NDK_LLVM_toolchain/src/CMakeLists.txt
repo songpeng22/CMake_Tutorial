@@ -5,7 +5,7 @@ PROJECT(Solution)
 #project
 SET ( project_name test_project )
 #CMake include
-include("android_ndk_llvm.cmake")
+#include("android_ndk_llvm.cmake")
 
 INCLUDE_DIRECTORIES(
 ../include
