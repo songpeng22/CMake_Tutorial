@@ -22,15 +22,15 @@ set TOOL_CHAIN_FILE="%NDK_PATH%\build\cmake\android.toolchain.cmake"
 echo "TOOL_CHAIN_FILE is %TOOL_CHAIN_FILE%"
 
 REM # make
-set MAKE_PATH="%FILE_DIR%\tool\ninja\ninja.exe"
+set MAKE_PATH="C:\Qt\Qt5.12.4\Tools\mingw730_32\bin\mingw32-make.exe"
 echo "MAKE_PATH is %MAKE_PATH%"
 
 REM # clean
-rm -r build_ndk_on_windows
-mkdir build_ndk_on_windows
+rm -r build_mingw_ndk_on_windows
+mkdir build_mingw_ndk_on_windows
 
 REM # build
-pushd build_ndk_on_windows
-cmake -G "Ninja" ../src -DANDROID_NDK="%NDK_PATH%" -DCMAKE_TOOLCHAIN_FILE=%TOOL_CHAIN_FILE% -DANDROID_PLATFORM=android-24  -DCMAKE_BUILD_TYPE=Release  -DANDROID_ABI="arm64-v8a" -DCMAKE_MAKE_PROGRAM=%MAKE_PATH%
+pushd build_mingw_ndk_on_windows
+cmake -G "MinGW Makefiles" ../src -DANDROID_NDK="%NDK_PATH%" -DCMAKE_TOOLCHAIN_FILE=%TOOL_CHAIN_FILE% -DANDROID_PLATFORM=android-24  -DCMAKE_BUILD_TYPE=Release  -DANDROID_ABI="arm64-v8a" -DCMAKE_MAKE_PROGRAM=%MAKE_PATH%
 cmake --build .
 popd
