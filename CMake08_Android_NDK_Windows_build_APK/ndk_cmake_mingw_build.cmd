@@ -33,6 +33,7 @@ mkdir build_mingw_ndk_on_windows
 
 REM # build
 pushd build_mingw_ndk_on_windows
-cmake -G "MinGW Makefiles" ../src -DANDROID_NDK="%NDK_PATH%" -DCMAKE_TOOLCHAIN_FILE=%TOOL_CHAIN_FILE% -DANDROID_PLATFORM=android-24  -DCMAKE_BUILD_TYPE=Release  -DANDROID_ABI="arm64-v8a" -DCMAKE_MAKE_PROGRAM=%MAKE_PATH%
-cmake --build . --verbose 
+cmake -G "MinGW Makefiles" ../src -DANDROID_NDK="%NDK_PATH%" -DCMAKE_TOOLCHAIN_FILE=%TOOL_CHAIN_FILE% -DANDROID_ABI="arm64-v8a" -DANDROID_STL="none" -DCMAKE_MAKE_PROGRAM=%MAKE_PATH%
+REM cmake -G "MinGW Makefiles" ../src
+cmake --build . --verbose
 popd
