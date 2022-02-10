@@ -31,9 +31,13 @@ REM # clean
 rm -r build_mingw_ndk_on_windows
 mkdir build_mingw_ndk_on_windows
 
-REM # build
 pushd build_mingw_ndk_on_windows
-cmake -G "MinGW Makefiles" ../src -DANDROID_NDK="%NDK_PATH%" -DCMAKE_TOOLCHAIN_FILE=%TOOL_CHAIN_FILE% -DANDROID_ABI="arm64-v8a" -DANDROID_STL="none" -DCMAKE_MAKE_PROGRAM=%MAKE_PATH%
-REM cmake -G "MinGW Makefiles" ../src
+REM # generate makefile
+REM # option 1, predefine.cmake must be include before PROJECT() section
+cmake -G "MinGW Makefiles" ../src 
+REM # option 2
+REM cmake -G "MinGW Makefiles" ../src -DANDROID_NDK="%NDK_PATH%" -DCMAKE_TOOLCHAIN_FILE=%TOOL_CHAIN_FILE% -DANDROID_ABI="arm64-v8a" -DANDROID_STL="none" -DCMAKE_MAKE_PROGRAM=%MAKE_PATH%
+
+REM # build
 cmake --build . --verbose
 popd

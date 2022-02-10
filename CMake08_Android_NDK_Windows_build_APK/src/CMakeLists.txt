@@ -1,24 +1,39 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.2)
 message( "***************************break line**********************************" )
 
+# CMake predefine
+# some predefines must be placed before PROJECT() section, in order to make right decision during cmake compiler choosing 
+include("android_predefine.cmake")
+MESSAGE(STATUS "QT_HOME: " ${QT_ANDROID_QT_ROOT})
+MESSAGE(STATUS "NDK_HOME: " ${QT_ANDROID_NDK_ROOT})
+MESSAGE(STATUS "SDK_HOME: " ${QT_ANDROID_SDK_ROOT})
+
 #Solution name
-PROJECT(qtTest)
+PROJECT(Android_Solution)
 #project
 SET ( project_name qtTest )
 
 # CMake include 
 include("choose_qt_sdk.cmake")
 CHOOSE_QT_SDK(QT_ANDROID)
-CMAKE_QT_CONFIG()
-include("choose_android_sdk.cmake")
 # CMake QT config(Find package etc.)
+CMAKE_QT_CONFIG()
+
+# make sure that the Android toolchain is used
+IF(NOT ANDROID)
+    MESSAGE(STATUS "ANDROID not exist.")
+ELSE()
+    MESSAGE(STATUS "ANDROID: " ${ANDROID})
+ENDIF()
 
 # CMake flags
+SET(CMAKE_BUILD_TYPE Debug)
+SET(CMAKE_CXX_FLAGS_DEBUG "-std=c++11")	#/MTd
+add_compile_options(-Wall)
 MESSAGE(STATUS "CMAKE_C_FLAGS: " ${CMAKE_C_FLAGS})
 MESSAGE(STATUS "CMAKE_CXX_FLAGS: " ${CMAKE_CXX_FLAGS})
 MESSAGE(STATUS "CMAKE_CXX_FLAGS_DEBUG: " ${CMAKE_C_FLAGS_DEBUG})
 MESSAGE(STATUS "CMAKE_CXX_FLAGS_DEBUG: " ${CMAKE_CXX_FLAGS_DEBUG})
-SET(CMAKE_CXX_FLAGS_DEBUG "-std=c++11")	#/MTd
 
 
 INCLUDE_DIRECTORIES(
