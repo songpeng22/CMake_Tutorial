@@ -1,5 +1,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.2)
 message( "***************************break line**********************************" )
+MESSAGE(STATUS "CMAKE_GENERATOR: " ${CMAKE_GENERATOR})
 
 # CMake predefine
 # some predefines must be placed before PROJECT() section, in order to make right decision during cmake compiler choosing 
