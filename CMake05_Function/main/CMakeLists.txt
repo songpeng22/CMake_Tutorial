@@ -6,6 +6,9 @@ include("./cmake/recursive_search.cmake")
 include("./cmake/force_mtd.cmake")
 # force to use mtd
 configureMsvcRuntime()
+# try macro parameters
+include("./cmake/try.cmake")
+try_macro_param( test_lib test_apk OPTION_1st PACKAGE_NAME "com.example.qtTest" )
 
 #Solutin
 #PROJECT(Solution)

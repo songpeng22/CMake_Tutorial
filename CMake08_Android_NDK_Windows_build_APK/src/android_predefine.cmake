@@ -5,7 +5,7 @@ IF(NOT JAVA_HOME)
 ELSE()
     MESSAGE(STATUS "JAVA_HOME: " ${JAVA_HOME})
 ENDIF()
-SET(QT_ANDROID_QT_ROOT C:/Qt/Qt5.12.4/5.12.4/android_arm64_v8a/ )
+SET(QT_ANDROID_QT_ROOT C:/Qt/Qt5.12.4/5.12.4/android_arm64_v8a )
 SET(QT_ANDROID_NDK_ROOT C:/Android_NDK/android-ndk-r19c )
 SET(QT_ANDROID_SDK_ROOT C:/Android_SDK_CommandLine )
 

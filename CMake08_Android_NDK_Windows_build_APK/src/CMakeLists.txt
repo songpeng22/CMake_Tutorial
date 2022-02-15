@@ -16,9 +16,6 @@ MESSAGE(STATUS "SDK_HOME: " ${QT_ANDROID_SDK_ROOT})
 PROJECT(Android_Solution)
 #project
 SET ( PROJECT_NAME qtTest )
-SET ( LIB_NAME qtTest )
-SET ( LIB_FULL_NAME lib${LIB_NAME}.so )
-SET ( APK_NAME ${LIB_NAME}.apk )
 
 # CMake include 
 include("choose_qt_sdk.cmake")
@@ -112,6 +109,10 @@ target_link_libraries( ${PROJECT_NAME}
 
 # APK generator
 if(ANDROID)
-    add_qt_android_apk( ${PROJECT_NAME} )
+    set(LIB_NAME ${PROJECT_NAME})
+    set(APK_NAME ${LIB_NAME})
+    message(STATUS "PROJECT_NAME is:" ${PROJECT_NAME})
+
+    add_qt_android_apk( ${LIB_NAME} ${APK_NAME} )
 endif()
 
