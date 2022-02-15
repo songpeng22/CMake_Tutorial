@@ -81,6 +81,10 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
         endif()
     endif()
 
+    # overlay AndroidManifest.xml
+    set(QT_ANDROID_APP_PACKAGE_SOURCE_ROOT ${CMAKE_CURRENT_BINARY_DIR}/overlay)
+    file(MAKE_DIRECTORY ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT})
+
     # create the configuration file that will feed androiddeployqt
     # 1. replace placeholder variables at generation time
     configure_file(${CMAKE_SOURCE_DIR}/qtdeploy.json.in ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json.in @ONLY)
@@ -93,11 +97,27 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
     ## 
     # Decide AndroidManifest.xml related setting
     ##
-    set(QT_ANDROID_APP_PACKAGE_SOURCE_ROOT ${CMAKE_SOURCE_DIR}/AndroidManifest.xml)
-
-
-
-
+    # ANDROID_PACKAGE_SOURCE_DIR: This variable can be used to specify a directory where additions and modifications 
+    # can be made to the default Android package template. The androiddeployqt tool will copy the application template 
+    # from Qt into the build directory, and then it will copy the contents of the ANDROID_PACKAGE_SOURCE_DIR 
+    # on top of this, overwriting any existing files. The update step where parts of the source files are modified 
+    # automatically to reflect your other settings is then run on the resulting merged package. 
+    # If you, for instance, want to make a custom AndroidManifest.xml for your application, then place this directly 
+    # into the folder specified in this variable. 
+    # You can also add custom Java files in ANDROID_PACKAGE_SOURCE_DIR/src.
+    #set(ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/overlay) # !!! this do not work
+    set(QT_ANDROID_APP_PACKAGE_NAME ${PACKAGE_NAME})
+    # 1. replace placeholder variables at generation time
+    configure_file(${CMAKE_SOURCE_DIR}/AndroidManifest.xml.in ${CMAKE_CURRENT_BINARY_DIR}/AndroidManifest.xml.in @ONLY)
+    # 2. generate AndroidManifest.xml for overlay
+    file(GENERATE
+        OUTPUT ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT}/AndroidManifest.xml
+        INPUT ${CMAKE_CURRENT_BINARY_DIR}/AndroidManifest.xml.in
+    )
+    
+    ##
+     # start to pack
+    ##
     #add_custom_command(TARGET <target>
     #               PRE_BUILD | PRE_LINK | POST_BUILD
     #               COMMAND command1 [ARGS] [args1...]
@@ -114,7 +134,7 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${QT_ANDROID_APP_BINARY_DIR}/libs/${ANDROID_ABI}
         COMMAND ${CMAKE_COMMAND} -E make_directory ${QT_ANDROID_APP_BINARY_DIR}/libs/${ANDROID_ABI}
         COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/${LIB_FULL_NAME} ${QT_ANDROID_APP_BINARY_DIR}/libs/${ANDROID_ABI}
-        #COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/AndroidManifest.xml ${QT_ANDROID_APP_BINARY_DIR}/
+        COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/AndroidManifest.xml ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT}/
         COMMAND ${QT_ANDROID_QT_ROOT}/bin/androiddeployqt
         #--input ${CMAKE_SOURCE_DIR}/android.json
         --input ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json
