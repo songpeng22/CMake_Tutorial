@@ -1,6 +1,9 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.2)
-message( "***************************break line**********************************" )
+message( "****************************************break line****************************************" )
 MESSAGE(STATUS "CMAKE_GENERATOR: " ${CMAKE_GENERATOR})
+MESSAGE(STATUS "CMAKE_SOURCE_DIR: " ${CMAKE_SOURCE_DIR})
+MESSAGE(STATUS "CMAKE_CURRENT_BINARY_DIR: " ${CMAKE_CURRENT_BINARY_DIR})
+
 
 # CMake predefine
 # some predefines must be placed before PROJECT() section, in order to make right decision during cmake compiler choosing 
@@ -12,13 +15,17 @@ MESSAGE(STATUS "SDK_HOME: " ${QT_ANDROID_SDK_ROOT})
 #Solution name
 PROJECT(Android_Solution)
 #project
-SET ( project_name qtTest )
+SET ( PROJECT_NAME qtTest )
+SET ( LIB_NAME qtTest )
+SET ( LIB_FULL_NAME lib${LIB_NAME}.so )
+SET ( APK_NAME ${LIB_NAME}.apk )
 
 # CMake include 
 include("choose_qt_sdk.cmake")
 CHOOSE_QT_SDK(QT_ANDROID)
 # CMake QT config(Find package etc.)
 CMAKE_QT_CONFIG()
+include("add_qt_lib_to_apk.cmake")
 
 # make sure that the Android toolchain is used
 IF(NOT ANDROID)
@@ -29,11 +36,11 @@ ENDIF()
 
 # CMake flags
 SET(CMAKE_BUILD_TYPE Debug)
-SET(CMAKE_CXX_FLAGS_DEBUG "-std=c++11")	#/MTd
+#SET(CMAKE_CXX_FLAGS_DEBUG "-std=c++11")	#/MTd
 add_compile_options(-Wall)
 MESSAGE(STATUS "CMAKE_C_FLAGS: " ${CMAKE_C_FLAGS})
 MESSAGE(STATUS "CMAKE_CXX_FLAGS: " ${CMAKE_CXX_FLAGS})
-MESSAGE(STATUS "CMAKE_CXX_FLAGS_DEBUG: " ${CMAKE_C_FLAGS_DEBUG})
+MESSAGE(STATUS "CMAKE_C_FLAGS_DEBUG: " ${CMAKE_C_FLAGS_DEBUG})
 MESSAGE(STATUS "CMAKE_CXX_FLAGS_DEBUG: " ${CMAKE_CXX_FLAGS_DEBUG})
 
 
@@ -61,13 +68,13 @@ link_directories(
 )
 
 #project
-FILE (GLOB project_sources
+FILE (GLOB PROJECT_SOURCES
 	*.cpp
     *.qml
     qml.qrc
 )
 
-SET (project_headers
+SET (PROJECT_HEADERS
 
 )
 
@@ -75,9 +82,11 @@ ADD_DEFINITIONS(
 -DZMQ_STATIC
 )
 
-ADD_EXECUTABLE ( ${project_name} ${project_sources} ${project_headers})
-
-
+IF(ANDROID)
+    ADD_LIBRARY( ${PROJECT_NAME} SHARED ${PROJECT_SOURCES} ${PROJECT_HEADERS} )
+ELSE()
+    ADD_EXECUTABLE ( ${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS} )
+ENDIF()
 
 # Platform libs
 set(PLIBS
@@ -90,7 +99,7 @@ set(PLIBS
 )
 
 # Must After add_executable
-target_link_libraries( ${project_name}
+target_link_libraries( ${PROJECT_NAME}
     ${PLIBS}
     ${Qt5Core_LIBRARIES}
     ${Qt5Gui_LIBRARIES}
@@ -100,4 +109,9 @@ target_link_libraries( ${project_name}
     ${Qt5QuickWidgets_LIBRARIES}
     ${Qt5QuickControls2_LIBRARIES}
 )
+
+# APK generator
+if(ANDROID)
+    add_qt_android_apk( ${PROJECT_NAME} )
+endif()
 

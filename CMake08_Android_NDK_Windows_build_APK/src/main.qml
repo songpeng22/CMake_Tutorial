@@ -1,5 +1,5 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
+import QtQuick 2.1
+import QtQuick.Window 2.1
 
 Window {
     visible: true
@@ -10,6 +10,12 @@ Window {
     Rectangle
     {
         anchors.fill: parent
-        color: "red"
+        color: "cyan"
+		Text
+		{
+            
+            anchors.centerIn: parent
+			text: "Hello World_2st!!!"
+		}
     }
 }
