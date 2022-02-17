@@ -7,7 +7,7 @@ MESSAGE(STATUS "CMAKE_CURRENT_BINARY_DIR: " ${CMAKE_CURRENT_BINARY_DIR})
 
 # CMake predefine
 # some predefines must be placed before PROJECT() section, in order to make right decision during cmake compiler choosing 
-include("android_predefine.cmake")
+include("../cmake/android_predefine.cmake")
 MESSAGE(STATUS "QT_HOME: " ${QT_ANDROID_QT_ROOT})
 MESSAGE(STATUS "NDK_HOME: " ${QT_ANDROID_NDK_ROOT})
 MESSAGE(STATUS "SDK_HOME: " ${QT_ANDROID_SDK_ROOT})
@@ -19,7 +19,7 @@ SET ( PROJECT_NAME qtTest )
 
 # CMake include 
 # CMake include QT
-include("qt.cmake")
+include("../cmake/qt.cmake")
 CHOOSE_QT_SDK(QT_ANDROID)
 useQtModule(Core)
 useQtModule(Gui)
@@ -30,7 +30,7 @@ useQtModule(QuickControls2)
 useQtModule(Qml)
 useQtModule(Network)
 # CMake include android
-include("add_qt_lib_to_apk.cmake")
+include("../cmake/add_qt_lib_to_apk.cmake")
 message(STATUS "QT_INCLUDES is:" ${QT_INCLUDES})
 message(STATUS "QT_LIBS is:" ${QT_LIBS})
 
