@@ -1,12 +1,12 @@
-set( QT_MSVC2013_64 1 )
-set( QT_MSVC2015_32 2 )
-set( QT_MSVC2015_64 3 )
-set( QT_MSVC2017_32 4 )
-set( QT_MSVC2017_64 5 )
-set( QT_MSVC2013_32_STATIC 6 )
-set( QT_MSVC2015_32_STATIC 7 )
-set( QT_MSVC2015_32_STATIC 7 )
-set( QT_ANDROID 8)
+set( QT_MSVC2013_64         1 )
+set( QT_MSVC2015_32         2 )
+set( QT_MSVC2015_64         3 )
+set( QT_MSVC2017_32         4 )
+set( QT_MSVC2017_64         5 )
+set( QT_MSVC2013_32_STATIC  6 )
+set( QT_MSVC2015_32_STATIC  7 )
+set( QT_MSVC2015_32_STATIC  7 )
+set( QT_ANDROID             8 )
 
 MACRO(CHOOSE_QT_SDK SDK_VERSION)
 message("SDK_VERSION: " ${SDK_VERSION})
@@ -56,7 +56,6 @@ endif( ${SDK_VERSION} EQUAL QT_MSVC2013_64 )
 message("CMAKE_PREFIX_PATH from MACRO: " ${CMAKE_PREFIX_PATH})
 ENDMACRO()
 
-MACRO(CMAKE_QT_CONFIG)
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # CMake moc automatically when needed
@@ -66,11 +65,8 @@ set(CMAKE_AUTOUIC ON)
 #CMake rcc automatically( handle qrc file )
 set(CMAKE_AUTORCC ON)
 
-# Find the QtWidgets library
-find_package( Qt5 REQUIRED 
-# QuickWidgets means CMake would search for ".\lib\cmake\Qt5QuickWidgetsConfig.cmake"
-    COMPONENTS Core Gui Widgets Qml Quick QuickWidgets QuickControls2 Network
-)
-ENDMACRO()
-
-
+macro(useQtModule arg)
+    FIND_PACKAGE(Qt5${arg} REQUIRED)
+    SET(QT_INCLUDES ${QT_INCLUDES} ${Qt5${arg}_INCLUDE_DIRS})
+    SET(QT_LIBS ${QT_LIBS} Qt5::${arg}) 
+endmacro()

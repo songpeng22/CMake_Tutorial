@@ -18,11 +18,22 @@ PROJECT(Android_Solution)
 SET ( PROJECT_NAME qtTest )
 
 # CMake include 
-include("choose_qt_sdk.cmake")
+# CMake include QT
+include("qt.cmake")
 CHOOSE_QT_SDK(QT_ANDROID)
-# CMake QT config(Find package etc.)
-CMAKE_QT_CONFIG()
+useQtModule(Core)
+useQtModule(Gui)
+useQtModule(Widgets)
+useQtModule(Quick)
+useQtModule(QuickWidgets)
+useQtModule(QuickControls2)
+useQtModule(Qml)
+useQtModule(Network)
+# CMake include android
 include("add_qt_lib_to_apk.cmake")
+message(STATUS "QT_INCLUDES is:" ${QT_INCLUDES})
+message(STATUS "QT_LIBS is:" ${QT_LIBS})
+
 
 # make sure that the Android toolchain is used
 IF(NOT ANDROID)
@@ -45,13 +56,7 @@ INCLUDE_DIRECTORIES(
 # Qt5::Core means there is "./include/QtCore""
     C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include
     C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++abi/include
-    Qt5::Core   
-    Qt5::Gui
-    Qt5::Widgets
-    Qt5::Qml
-    Qt5::Quick
-    Qt5::QuickWidgets
-    Qt5::QuickControls2
+    ${QT_INCLUDES}
 )
 
 link_directories(
@@ -98,13 +103,7 @@ set(PLIBS
 # Must After add_executable
 target_link_libraries( ${PROJECT_NAME}
     ${PLIBS}
-    ${Qt5Core_LIBRARIES}
-    ${Qt5Gui_LIBRARIES}
-    ${Qt5Widgets_LIBRARIES}
-    ${Qt5Qml_LIBRARIES}
-    ${Qt5Quick_LIBRARIES}
-    ${Qt5QuickWidgets_LIBRARIES}
-    ${Qt5QuickControls2_LIBRARIES}
+    ${QT_LIBS}
 )
 
 # APK generator
