@@ -30,7 +30,7 @@ useQtModule(QuickControls2)
 useQtModule(Qml)
 useQtModule(Network)
 # CMake include android
-include("../cmake/add_qt_lib_to_apk.cmake")
+include(../cmake/add_qt_lib_to_apk.cmake)
 message(STATUS "QT_INCLUDES is:" ${QT_INCLUDES})
 message(STATUS "QT_LIBS is:" ${QT_LIBS})
 

@@ -146,5 +146,11 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
         #--reinstall
         #--verbose
         COMMAND ${CMAKE_COMMAND} -E copy ${QT_ANDROID_APP_BINARY_DIR}/build/outputs/apk/debug/android-build-debug.apk ${CMAKE_CURRENT_BINARY_DIR}/
+        COMMAND adb connect 172.25.115.199
+        COMMAND adb shell pm uninstall com.example.qtTest
+        COMMAND pwd
+        COMMAND adb install android-build-debug.apk
+        COMMAND adb shell monkey -p com.example.qtTest -c android.intent.category.LAUNCHER 1
+        COMMAND adb disconnect
     )
 endmacro()
