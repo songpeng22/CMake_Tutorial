@@ -44,7 +44,7 @@ ENDIF()
 
 # CMake flags
 SET(CMAKE_BUILD_TYPE Debug)
-#SET(CMAKE_CXX_FLAGS_DEBUG "-std=c++11")	#/MTd
+SET(CMAKE_CXX_FLAGS_DEBUG "-stdlib=libc++ -std=c++11")
 add_compile_options(-Wall)
 MESSAGE(STATUS "CMAKE_C_FLAGS: " ${CMAKE_C_FLAGS})
 MESSAGE(STATUS "CMAKE_CXX_FLAGS: " ${CMAKE_CXX_FLAGS})
@@ -55,7 +55,7 @@ MESSAGE(STATUS "CMAKE_CXX_FLAGS_DEBUG: " ${CMAKE_CXX_FLAGS_DEBUG})
 INCLUDE_DIRECTORIES(
 # Qt5::Core means there is "./include/QtCore""
     C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include
-    C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++abi/include
+    #C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++abi/include
     ${QT_INCLUDES}
 )
 
@@ -65,7 +65,7 @@ link_directories(
     # libc++
     C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/
     # libstdc++ 
-    C:/Android_NDK/android-ndk-r19c/toolchains/llvm/prebuilt/windows/sysroot/usr/lib/aarch64-linux-android/21
+    #C:/Android_NDK/android-ndk-r19c/toolchains/llvm/prebuilt/windows/sysroot/usr/lib/aarch64-linux-android/21
     #C:/Android_NDK/android-ndk-r19c/platforms/android-21/arch-arm64/usr/lib/
 )
 
@@ -95,7 +95,7 @@ set(PLIBS
     liblog.so
     libz.so
     libc++_shared.so
-    libstdc++.so
+    #libstdc++.so
     libGLESv2.so
     libQt5QuickTemplates2.so
 )
