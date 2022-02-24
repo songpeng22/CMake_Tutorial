@@ -37,3 +37,8 @@ ENDIF()
 SET(CMAKE_TOOLCHAIN_FILE ${QT_ANDROID_NDK_ROOT}/build/cmake/android.toolchain.cmake)
 #MESSAGE(STATUS "CMAKE_TOOLCHAIN_FILE: " ${CMAKE_TOOLCHAIN_FILE})
 #MESSAGE(STATUS "CMAKE_MAKE_PROGRAM: " ${CMAKE_MAKE_PROGRAM})
+
+# output variable
+SET(CXX_INCLUDES ${CXX_INCLUDES} C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include )
+SET(CXX_LIBS ${CXX_LIBS} C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_shared.so )
+SET(CXX_LIBS_DIR ${CXX_LIBS_DIR} C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/ )

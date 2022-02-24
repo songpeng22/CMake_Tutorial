@@ -87,7 +87,7 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
 
     # create the configuration file that will feed androiddeployqt
     # 1. replace placeholder variables at generation time
-    configure_file(${CMAKE_SOURCE_DIR}/qtdeploy.json.in ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json.in @ONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/../android/qtdeploy.json.in ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json.in @ONLY)
     # 2. evaluate generator expressions at build time
     file(GENERATE
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json
@@ -108,7 +108,7 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
     #set(ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/overlay) # !!! this do not work
     set(QT_ANDROID_APP_PACKAGE_NAME ${PACKAGE_NAME})
     # 1. replace placeholder variables at generation time
-    configure_file(${CMAKE_SOURCE_DIR}/AndroidManifest.xml.in ${CMAKE_CURRENT_BINARY_DIR}/AndroidManifest.xml.in @ONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/../android/AndroidManifest.xml.in ${CMAKE_CURRENT_BINARY_DIR}/AndroidManifest.xml.in @ONLY)
     # 2. generate AndroidManifest.xml for overlay
     file(GENERATE
         OUTPUT ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT}/AndroidManifest.xml
@@ -134,7 +134,7 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${QT_ANDROID_APP_BINARY_DIR}/libs/${ANDROID_ABI}
         COMMAND ${CMAKE_COMMAND} -E make_directory ${QT_ANDROID_APP_BINARY_DIR}/libs/${ANDROID_ABI}
         COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/${LIB_FULL_NAME} ${QT_ANDROID_APP_BINARY_DIR}/libs/${ANDROID_ABI}
-        COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/AndroidManifest.xml ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT}/
+        COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/../android/AndroidManifest.xml ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT}/
         COMMAND ${QT_ANDROID_QT_ROOT}/bin/androiddeployqt
         #--input ${CMAKE_SOURCE_DIR}/android.json
         --input ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json

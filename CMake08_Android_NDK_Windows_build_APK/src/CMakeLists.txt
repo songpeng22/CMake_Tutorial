@@ -29,10 +29,11 @@ useQtModule(QuickWidgets)
 useQtModule(QuickControls2)
 useQtModule(Qml)
 useQtModule(Network)
-# CMake include android
-include(../cmake/add_qt_lib_to_apk.cmake)
 message(STATUS "QT_INCLUDES is:" ${QT_INCLUDES})
 message(STATUS "QT_LIBS is:" ${QT_LIBS})
+# CMake include android
+include(../cmake/add_qt_lib_to_apk.cmake)
+
 
 
 # make sure that the Android toolchain is used
@@ -54,7 +55,7 @@ MESSAGE(STATUS "CMAKE_CXX_FLAGS_DEBUG: " ${CMAKE_CXX_FLAGS_DEBUG})
 
 INCLUDE_DIRECTORIES(
 # Qt5::Core means there is "./include/QtCore""
-    C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++/include
+    ${CXX_INCLUDES}
     #C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++abi/include
     ${QT_INCLUDES}
 )
@@ -63,7 +64,7 @@ link_directories(
     # QT .so
     C:/Qt/Qt5.12.4/5.12.4/android_arm64_v8a/lib/
     # libc++
-    C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/
+    #${CXX_LIBS_DIR}
     # libstdc++ 
     #C:/Android_NDK/android-ndk-r19c/toolchains/llvm/prebuilt/windows/sysroot/usr/lib/aarch64-linux-android/21
     #C:/Android_NDK/android-ndk-r19c/platforms/android-21/arch-arm64/usr/lib/
@@ -94,7 +95,7 @@ ENDIF()
 set(PLIBS
     liblog.so
     libz.so
-    libc++_shared.so
+    ${CXX_LIBS}
     #libstdc++.so
     libGLESv2.so
     libQt5QuickTemplates2.so
