@@ -84,6 +84,7 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
     # overlay AndroidManifest.xml
     set(QT_ANDROID_APP_PACKAGE_SOURCE_ROOT ${CMAKE_CURRENT_BINARY_DIR}/overlay)
     file(MAKE_DIRECTORY ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT})
+	message(STATUS "QT_ANDROID_APP_PACKAGE_SOURCE_ROOT is:" ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT})
 
     # create the configuration file that will feed androiddeployqt
     # 1. replace placeholder variables at generation time
@@ -130,11 +131,10 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
     add_custom_command(
         # after the target has been created, this custom command will start to run
         TARGET ${LIB_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E echo "post build: add_qt_android_apk()......"
+        COMMAND ${CMAKE_COMMAND} -E echo "post build: ${LIB_NAME}: add_qt_android_apk()......"
         COMMAND ${CMAKE_COMMAND} -E remove_directory ${QT_ANDROID_APP_BINARY_DIR}/libs/${ANDROID_ABI}
         COMMAND ${CMAKE_COMMAND} -E make_directory ${QT_ANDROID_APP_BINARY_DIR}/libs/${ANDROID_ABI}
         COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/${LIB_FULL_NAME} ${QT_ANDROID_APP_BINARY_DIR}/libs/${ANDROID_ABI}
-        COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/../android/AndroidManifest.xml ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT}/
         COMMAND ${QT_ANDROID_QT_ROOT}/bin/androiddeployqt
         #--input ${CMAKE_SOURCE_DIR}/android.json
         --input ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json
@@ -147,10 +147,10 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
         #--verbose
         COMMAND ${CMAKE_COMMAND} -E copy ${QT_ANDROID_APP_BINARY_DIR}/build/outputs/apk/debug/android-build-debug.apk ${CMAKE_CURRENT_BINARY_DIR}/
         COMMAND adb connect 172.25.115.199
-        COMMAND adb shell pm uninstall com.example.qtTest
+        COMMAND adb shell pm uninstall com.example.${LIB_NAME}
         COMMAND pwd
         COMMAND adb install android-build-debug.apk
-        COMMAND adb shell monkey -p com.example.qtTest -c android.intent.category.LAUNCHER 1
+        COMMAND adb shell monkey -p com.example.${LIB_NAME} -c android.intent.category.LAUNCHER 1
         COMMAND adb disconnect
     )
 endmacro()
