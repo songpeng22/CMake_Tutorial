@@ -51,6 +51,18 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
         set(QT_ANDROID_ARCHITECTURES "\"${ANDROID_ABI}\":\"${ANDROID_ABI}\"")
     endif()
 
+    # set the list of dependant libraries
+    foreach(LIB ${ANDROID_EXTRA_LIB})
+        if(EXTRA_LIBS)
+            set(EXTRA_LIBS "${EXTRA_LIBS},${LIB}")
+        else()
+            set(EXTRA_LIBS "${LIB}")
+        endif()
+    endforeach()
+    set(QT_ANDROID_APP_EXTRA_LIBS "\"android-extra-libs\": \"${EXTRA_LIBS}\",")
+    message(STATUS "QT_ANDROID_APP_EXTRA_LIBS: ${QT_ANDROID_APP_EXTRA_LIBS}")
+    
+
     # determine whether to use the gcc- or llvm/clang- toolchain;
     # if ANDROID_USE_LLVM was explicitly set, use its value directly,
     # otherwise ANDROID_TOOLCHAIN value (set by the NDK's toolchain file)
@@ -82,17 +94,17 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
     endif()
 
     # overlay AndroidManifest.xml
-    set(QT_ANDROID_APP_PACKAGE_SOURCE_ROOT ${CMAKE_CURRENT_BINARY_DIR}/overlay)
+    set(QT_ANDROID_APP_PACKAGE_SOURCE_ROOT ${CMAKE_SOURCE_DIR}/../android)
     file(MAKE_DIRECTORY ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT})
 	message(STATUS "QT_ANDROID_APP_PACKAGE_SOURCE_ROOT is:" ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT})
 
     # create the configuration file that will feed androiddeployqt
     # 1. replace placeholder variables at generation time
-    configure_file(${CMAKE_SOURCE_DIR}/../android/qtdeploy.json.in ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json.in @ONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/../android/in/qtdeploy.json.in ${CMAKE_SOURCE_DIR}/../android/out/qtdeploy.json.in @ONLY)
     # 2. evaluate generator expressions at build time
     file(GENERATE
-        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json
-        INPUT ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json.in
+        OUTPUT ${CMAKE_SOURCE_DIR}/../android/qtdeploy.json
+        INPUT ${CMAKE_SOURCE_DIR}/../android/out/qtdeploy.json.in
     )
 
     ## 
@@ -109,12 +121,14 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
     #set(ANDROID_PACKAGE_SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/overlay) # !!! this do not work
     set(QT_ANDROID_APP_PACKAGE_NAME ${PACKAGE_NAME})
     # 1. replace placeholder variables at generation time
-    configure_file(${CMAKE_SOURCE_DIR}/../android/AndroidManifest.xml.in ${CMAKE_CURRENT_BINARY_DIR}/AndroidManifest.xml.in @ONLY)
+    configure_file(${CMAKE_SOURCE_DIR}/../android/in/AndroidManifest.xml.in ${CMAKE_SOURCE_DIR}/../android/out/AndroidManifest.xml.in @ONLY)
     # 2. generate AndroidManifest.xml for overlay
     file(GENERATE
-        OUTPUT ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT}/AndroidManifest.xml
-        INPUT ${CMAKE_CURRENT_BINARY_DIR}/AndroidManifest.xml.in
+        OUTPUT ${CMAKE_SOURCE_DIR}/../android/AndroidManifest.xml
+        INPUT ${CMAKE_SOURCE_DIR}/../android/out/AndroidManifest.xml.in
     )
+
+    set(DEVICE FDGNW17225031186)
     
     ##
      # start to pack
@@ -137,7 +151,7 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
         COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/${LIB_FULL_NAME} ${QT_ANDROID_APP_BINARY_DIR}/libs/${ANDROID_ABI}
         COMMAND ${QT_ANDROID_QT_ROOT}/bin/androiddeployqt
         #--input ${CMAKE_SOURCE_DIR}/android.json
-        --input ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json
+        --input ${CMAKE_SOURCE_DIR}/../android/qtdeploy.json
         --output ${QT_ANDROID_APP_BINARY_DIR}
         --android-platform android-29
         --jdk ${JAVA_HOME}
@@ -146,11 +160,11 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
         #--reinstall
         #--verbose
         COMMAND ${CMAKE_COMMAND} -E copy ${QT_ANDROID_APP_BINARY_DIR}/build/outputs/apk/debug/android-build-debug.apk ${CMAKE_CURRENT_BINARY_DIR}/
-        COMMAND adb connect 172.25.115.199
-        COMMAND adb shell pm uninstall com.example.${LIB_NAME}
-        COMMAND pwd
-        COMMAND adb install android-build-debug.apk
-        COMMAND adb shell monkey -p com.example.${LIB_NAME} -c android.intent.category.LAUNCHER 1
-        COMMAND adb disconnect
+        #COMMAND adb connect 172.25.115.199
+        COMMAND adb -s ${DEVICE} shell pm uninstall com.example.${LIB_NAME}
+        #COMMAND pwd
+        COMMAND adb -s ${DEVICE} install android-build-debug.apk
+        COMMAND adb -s ${DEVICE} shell monkey -p com.example.${LIB_NAME} -c android.intent.category.LAUNCHER 1
+        #COMMAND adb disconnect
     )
 endmacro()

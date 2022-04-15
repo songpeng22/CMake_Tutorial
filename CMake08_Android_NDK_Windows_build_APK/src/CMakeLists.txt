@@ -58,16 +58,8 @@ INCLUDE_DIRECTORIES(
     ${CXX_INCLUDES}
     #C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++abi/include
     ${QT_INCLUDES}
-)
-
-link_directories(
-    # QT .so
-    C:/Qt/Qt5.12.4/5.12.4/android_arm64_v8a/lib/
-    # libc++
-    #${CXX_LIBS_DIR}
-    # libstdc++ 
-    #C:/Android_NDK/android-ndk-r19c/toolchains/llvm/prebuilt/windows/sysroot/usr/lib/aarch64-linux-android/21
-    #C:/Android_NDK/android-ndk-r19c/platforms/android-21/arch-arm64/usr/lib/
+    #
+    ../android/include
 )
 
 #project
@@ -81,15 +73,24 @@ SET (PROJECT_HEADERS
 
 )
 
-ADD_DEFINITIONS(
--DZMQ_STATIC
+link_directories(
+    # QT .so
+    C:/Qt/Qt5.12.4/5.12.4/android_arm64_v8a/lib/
+    # libc++
+    #${CXX_LIBS_DIR}
+    # libstdc++ 
+    #C:/Android_NDK/android-ndk-r19c/toolchains/llvm/prebuilt/windows/sysroot/usr/lib/aarch64-linux-android/21
+    #C:/Android_NDK/android-ndk-r19c/platforms/android-21/arch-arm64/usr/lib/
+    #
+    ../android/lib
 )
 
-IF(ANDROID)
-    ADD_LIBRARY( ${PROJECT_NAME} SHARED ${PROJECT_SOURCES} ${PROJECT_HEADERS} )
-ELSE()
-    ADD_EXECUTABLE ( ${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS} )
-ENDIF()
+file(GLOB ANDROID_EXTRA_LIB
+    #../android/lib/libbizlars.so
+    ../android/lib/libTest1.so
+    #../android/lib/libusb.so
+    #../android/lib/libusb1.0.so
+)
 
 # Platform libs
 set(PLIBS
@@ -99,7 +100,21 @@ set(PLIBS
     #libstdc++.so
     libGLESv2.so
     libQt5QuickTemplates2.so
+    #libusb.so      #cannot locate symbol "__write_chk"
+    #libusb1.0.so
+    #libbizlars.so
+    libTest1.so
 )
+
+ADD_DEFINITIONS(
+-DZMQ_STATIC
+)
+
+IF(ANDROID)
+    ADD_LIBRARY( ${PROJECT_NAME} SHARED ${PROJECT_SOURCES} ${PROJECT_HEADERS} )
+ELSE()
+    ADD_EXECUTABLE ( ${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS} )
+ENDIF()
 
 # Must After add_executable
 target_link_libraries( ${PROJECT_NAME}

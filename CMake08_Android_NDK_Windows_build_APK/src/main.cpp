@@ -1,8 +1,17 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QDebug>
+
+#include "test.h"
 
 int main(int argc, char *argv[])
 {
+    QCoreApplication::setApplicationName("posscale");
+
+    qDebug() << "main().........................................................................................................................1";
+
+    testLog();
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
