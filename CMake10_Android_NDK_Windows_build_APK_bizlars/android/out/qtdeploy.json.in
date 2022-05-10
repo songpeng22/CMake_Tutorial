@@ -1,0 +1,20 @@
+{
+ "description": "This file is to be read by androiddeployqt",
+ "qt": "C:/Qt/Qt5.12.4/5.12.4/android_arm64_v8a",
+ "sdk": "C:/Android_SDK_CommandLine",
+ "ndk": "C:/Android_NDK/android-ndk-r19c",
+ "sdkBuildToolsRevision": "29.0.2",
+ "toolchain-prefix": "llvm",
+ "tool-prefix": "llvm",
+ "toolchain-version": "4.9",
+ "ndk-host": "windows-x86_64",
+ "target-architecture": "arm64-v8a",
+ "qml-root-path": "C:/Users/songp/Desktop/Android/CMake_Tutorial/CMake10_Android_NDK_Windows_build_APK_bizlars/src",
+ "stdcpp-path": "C:/Android_NDK/android-ndk-r19c/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_shared.so",
+ "useLLVM": true,
+ "application-binary": "C:/Users/songp/Desktop/Android/CMake_Tutorial/CMake10_Android_NDK_Windows_build_APK_bizlars/build_mingw_ndk_on_windows/libqtTest.so",
+ "android-package": "com.example.qtTest",
+ "android-app-name": "qtTest",
+ "android-extra-libs": "C:/Users/songp/Desktop/Android/CMake_Tutorial/CMake10_Android_NDK_Windows_build_APK_bizlars/src/../android/libs/libTest1.so,C:/Users/songp/Desktop/Android/CMake_Tutorial/CMake10_Android_NDK_Windows_build_APK_bizlars/src/../android/libs/libUSBTest.so,C:/Users/songp/Desktop/Android/CMake_Tutorial/CMake10_Android_NDK_Windows_build_APK_bizlars/src/../android/libs/libbizlars.so,C:/Users/songp/Desktop/Android/CMake_Tutorial/CMake10_Android_NDK_Windows_build_APK_bizlars/src/../android/libs/libusb1.0.so",
+ "android-package-source-directory": "C:/Users/songp/Desktop/Android/CMake_Tutorial/CMake10_Android_NDK_Windows_build_APK_bizlars/src/../android"
+}
