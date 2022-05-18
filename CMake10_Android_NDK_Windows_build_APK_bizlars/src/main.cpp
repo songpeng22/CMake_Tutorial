@@ -1,10 +1,15 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QDebug>
+#include <QQmlContext>
 
 #include "test.h"
 #include "USBTest.h"
 #include "libusb.h"
+#include "bizWTlars.h"
+#include "scale.h"
+
+#if 0 
 
 void printdev(libusb_device *dev) {
 	libusb_device_descriptor desc;
@@ -41,16 +46,31 @@ void printdev(libusb_device *dev) {
 	libusb_free_config_descriptor(config);
 }
 
+#endif
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setApplicationName("posscale");
 
     qDebug() << "main().........................................................................................................................1";
 
+	QString weight;
+    QString tare;
+	BizWTlars bizLars;
+    int nWeight = 0;
+    int nTare = 0;
+    int nState = 0;
+
+	int nRet = bizLars.readWeight(&nWeight,&nTare,&nState);
+	weight = QString("%1").arg(nWeight);
+	tare = QString("%1").arg(nTare);
+
+	qDebug() << "readWeight nRet:" << nRet << " weight:" << weight << " tare:" << tare << "...................................................................................1";
+
 #if 0
     USBTestLog();
     libUSBTest();
-#else
+#elif 0
     libusb_device **devs; //pointer to pointer of device, used to retrieve a list of devices
 	libusb_context *ctx = NULL; //a libusb session
 	int r; //for return values
@@ -75,14 +95,18 @@ int main(int argc, char *argv[])
 		return 0;
 
 #endif
-
+#if 0
     testLog();
-
+#endif
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+
+	Scale scale;
+	engine.rootContext()->setContextProperty("scale", &scale);
+
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

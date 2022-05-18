@@ -128,7 +128,7 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
         INPUT ${CMAKE_SOURCE_DIR}/../android/out/AndroidManifest.xml.in
     )
 
-    set(DEVICE FDGNW17225031186)
+    set(DEVICE D5TXHSR0SJ)
     
     ##
      # start to pack
@@ -164,7 +164,7 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
         COMMAND adb -s ${DEVICE} shell pm uninstall com.example.${LIB_NAME}
         #COMMAND pwd
         COMMAND adb -s ${DEVICE} install android-build-debug.apk
-        COMMAND adb -s ${DEVICE} shell monkey -p com.example.${LIB_NAME} -c android.intent.category.LAUNCHER 1
+        COMMAND adb -s ${DEVICE} shell monkey --pct-syskeys 0 -p com.example.${LIB_NAME} -c android.intent.category.LAUNCHER 1
         #COMMAND adb disconnect
     )
 endmacro()

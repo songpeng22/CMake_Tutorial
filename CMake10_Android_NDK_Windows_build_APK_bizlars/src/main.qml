@@ -13,9 +13,18 @@ Window {
         color: "cyan"
 		Text
 		{
-            
+            id: idText
             anchors.centerIn: parent
 			text: "Hello World_1st!!!"
 		}
+
+        
+    }
+
+    Timer {
+        interval: 1000
+        running: true
+        repeat: true
+        onTriggered: idText.text = "ret:" + scale.ret + "\nweight:" + scale.weight + "\ntare:" + scale.tare//Date().toString()
     }
 }

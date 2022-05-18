@@ -86,11 +86,11 @@ link_directories(
 )
 
 file(GLOB ANDROID_EXTRA_LIB
-    ../android/libs/libbizlars.so
-    ../android/libs/libTest1.so
-    #../android/libs/libusb.so
     ../android/libs/libusb1.0.so
-    ../android/libs/libUSBTest.so
+    ../android/libs/libbizlars.so
+    #../android/libs/libTest1.so
+    #../android/libs/libusb.so
+    #../android/libs/libUSBTest.so
 )
 
 # Platform libs
@@ -102,10 +102,10 @@ set(PLIBS
     libGLESv2.so
     libQt5QuickTemplates2.so
     #libusb.so      #cannot locate symbol "__write_chk"
-    libusb1.0.so
+    #libusb1.0.so
     libbizlars.so
-    libTest1.so
-    libUSBTest.so
+    #libTest1.so
+    #libUSBTest.so
 )
 
 ADD_DEFINITIONS(
