@@ -54,18 +54,58 @@ int main(int argc, char *argv[])
 
     qDebug() << "main().........................................................................................................................1";
 
+	int ret = 0;
 	QString weight;
     QString tare;
+#if 0
 	BizWTlars bizLars;
     int nWeight = 0;
     int nTare = 0;
     int nState = 0;
+    int nCount =0;
+    ret = bizLars.open();
+#if 1
+	if( ret != true )
+#else
+    if( ret != ADC_SUCCESS )
+#endif	
+    {
+        qDebug() << "bizLars.open() failed 1st, ret:" << ret << ".................................................................1";
+        int nRet = bizLars.close();
+        qDebug() << "bizLars.close() returns" << nRet << "........................................................................1";
+        
+        ret = bizLars.open();
+#if 1
+		if( ret != true )
+#else
+    	if( ret != ADC_SUCCESS )
+#endif
+        {
+            qDebug() << "bizLars.open() failed 2nd, ret:" << ret << ".............................................................1";
+            return 1;
+        }
+        else
+        {
+            qDebug() << "bizLars.open() success....................................................................................1";
+        }
+    }
 
-	int nRet = bizLars.readWeight(&nWeight,&nTare,&nState);
+	ret = bizLars.readWeight(&nWeight,&nTare,&nState);
 	weight = QString("%1").arg(nWeight);
 	tare = QString("%1").arg(nTare);
 
-	qDebug() << "readWeight nRet:" << nRet << " weight:" << weight << " tare:" << tare << "...................................................................................1";
+	qDebug() << "readWeight ret:" << ret << " weight:" << weight << " tare:" << tare << "...................................................................................1";
+
+	ret = bizLars.close();
+#if 1
+	if( ret != true )
+#else
+    if( ret != ADC_SUCCESS )
+#endif
+    {
+        qDebug() << "bizLars.close() failed:" << ret << ".....................................................................1";
+    }
+#endif
 
 #if 0
     USBTestLog();
@@ -103,10 +143,10 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-
+#if 1
 	Scale scale;
 	engine.rootContext()->setContextProperty("scale", &scale);
-
+#endif
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

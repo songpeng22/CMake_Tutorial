@@ -153,7 +153,8 @@ macro(add_qt_android_apk LIB_NAME APK_NAME)
         #--input ${CMAKE_SOURCE_DIR}/android.json
         --input ${CMAKE_SOURCE_DIR}/../android/qtdeploy.json
         --output ${QT_ANDROID_APP_BINARY_DIR}
-        --android-platform android-29
+        #--android-platform android-29
+        --android-platform android-${ANDROID_PLATFORM}
         --jdk ${JAVA_HOME}
         --gradle
         #${QT_ANDROID_BUILD_TYPE}

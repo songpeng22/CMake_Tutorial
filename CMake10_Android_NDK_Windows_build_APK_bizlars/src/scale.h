@@ -24,6 +24,7 @@ public:
         int nRet = bizLars.readWeight(&nWeight,&nTare,&nState);
         m_ret = nRet;
         QString weight = QString("%1").arg(nWeight);
+        qDebug() << "readWeight,m_ret:" << m_ret << " weight:" << weight << "..................................................................6";
 	
         return weight;
     }

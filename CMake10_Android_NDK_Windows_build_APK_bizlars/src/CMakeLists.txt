@@ -89,7 +89,6 @@ file(GLOB ANDROID_EXTRA_LIB
     ../android/libs/libusb1.0.so
     ../android/libs/libbizlars.so
     #../android/libs/libTest1.so
-    #../android/libs/libusb.so
     #../android/libs/libUSBTest.so
 )
 

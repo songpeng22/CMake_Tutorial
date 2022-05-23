@@ -3,24 +3,34 @@
 Scale::Scale(QObject *parent) : QObject(parent)
 {
     m_ret = -1;
-    if( bizLars.open() != ADC_SUCCESS )
+    m_ret = bizLars.open();
+#if 1
+    if( m_ret != true )
+#else
+    if( m_ret != ADC_SUCCESS )
+#endif
     {
-        qDebug() << "bizlars open failed.";
+        qDebug() << "bizlars open failed,ret:" << m_ret << "..................................................................6";
     }
     else
     {
-        qDebug() << "bizlars open success.";
+        qDebug() << "bizlars open success,ret:" << m_ret << ".................................................................1";
     }
 }
 
 Scale::~Scale()
 {
-    if( bizLars.close() != ADC_SUCCESS )
+    m_ret = bizLars.close();
+#if 1
+    if( m_ret != true )
+#else
+    if( m_ret != ADC_SUCCESS )
+#endif
     {
-        qDebug() << "bizlars close failed.";
+        qDebug() << "bizlars close failed..................................................................1";
     }
     else
     {
-        qDebug() << "bizlars close success.";
+        qDebug() << "bizlars close success..................................................................1";
     }
 }
