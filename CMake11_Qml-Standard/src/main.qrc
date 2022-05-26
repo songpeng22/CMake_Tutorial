@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+	<file alias="base/Config.qml">base/Config.qml</file>
+        <file>main.qml</file>
+        <file>method2.qml</file>
+        <file>images/background.png</file>
+        <file>images/pinwheel.png</file>
+        <file>images/pole.png</file>
+        <file>utils.js</file>
+    </qresource>
+</RCC>
