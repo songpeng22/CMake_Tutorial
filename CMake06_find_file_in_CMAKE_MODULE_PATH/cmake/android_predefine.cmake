@@ -57,6 +57,6 @@ SET(CMAKE_TOOLCHAIN_FILE ${QT_ANDROID_NDK_ROOT}/build/cmake/android.toolchain.cm
 #MESSAGE(STATUS "CMAKE_MAKE_PROGRAM: " ${CMAKE_MAKE_PROGRAM})
 
 # output variable
-SET(ANDROID_INCLUDE ${ANDROID_INCLUDE} ${QT_ANDROID_NDK_ROOT}/sources/cxx-stl/llvm-libc++/include )
-SET(ANDROID_LIBS ${ANDROID_LIBS} ${QT_ANDROID_NDK_ROOT}/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_shared.so )
-SET(ANDROID_LIB_DIR ${ANDROID_LIB_DIR} ${QT_ANDROID_NDK_ROOT}/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/ )
+SET(CXX_INCLUDES ${CXX_INCLUDES} ${QT_ANDROID_NDK_ROOT}/sources/cxx-stl/llvm-libc++/include )
+SET(CXX_LIBS ${CXX_LIBS} ${QT_ANDROID_NDK_ROOT}/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_shared.so )
+SET(CXX_LIBS_DIR ${CXX_LIBS_DIR} ${QT_ANDROID_NDK_ROOT}/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/ )

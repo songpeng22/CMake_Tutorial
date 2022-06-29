@@ -1,0 +1,2 @@
+NDK build_library
+
