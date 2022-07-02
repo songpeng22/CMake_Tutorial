@@ -1,0 +1,9 @@
+find_path(LOGTEST_INCLUDE_DIR logTest.h /usr/include/ /usr/local/android/include/ ${CMAKE_SOURCE_DIR}/ModuleMode)
+find_library(LOGTEST_LIBRARY NAMES logTest PATHS /usr/lib /usr/local/android/lib ${CMAKE_SOURCE_DIR}/ModuleMode)
+
+message(STATUS "LOGTEST_INCLUDE_DIR:${LOGTEST_INCLUDE_DIR}")
+message(STATUS "LOGTEST_LIBRARY:${LOGTEST_LIBRARY}")
+
+if (LOGTEST_INCLUDE_DIR AND LOGTEST_LIBRARY)
+    set(LOGTEST_FOUND TRUE)
+endif (LOGTEST_INCLUDE_DIR AND LOGTEST_LIBRARY)
