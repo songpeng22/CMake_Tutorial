@@ -10,6 +10,6 @@ mkdir -p build_ndk
 
 # build
 pushd build_ndk
-cmake ../src -DCMAKE_TOOLCHAIN_FILE=$FILE_DIR/src/android_ndk_18.cmake
+cmake ../project/src -DCMAKE_TOOLCHAIN_FILE=$FILE_DIR/src/android_ndk_18.cmake
 make
 popd
