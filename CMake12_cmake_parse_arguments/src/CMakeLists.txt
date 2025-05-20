@@ -19,6 +19,7 @@ function(add_component NAME)
   message("includes  = ${COMP_INCLUDES}")
 endfunction()
 
+# FetchContent
 # 必须包含模块
 include(FetchContent)  
 # 声明要获取的内容
@@ -29,6 +30,10 @@ FetchContent_Declare(
 )
 # 执行下载并引入项目
 FetchContent_MakeAvailable(googletest)
+
+# replace
+string(REPLACE "Module_" "" ModuleName "Module_FileSystem")
+message("ModuleName  = ${ModuleName}")
 
 add_component(TDI "" PACKAGE SPHINX 
     SOURCES 
